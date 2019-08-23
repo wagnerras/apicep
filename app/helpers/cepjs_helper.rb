@@ -1,0 +1,2 @@
+module CepjsHelper
+end

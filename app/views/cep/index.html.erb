@@ -1,0 +1,44 @@
+<nav class="navbar navbar-light bg-light mb-4">
+			<div class="container">
+				<div class="navbar-brand mb-0 h1">
+					<h3>App Pesquisa Endereço</h3> 
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+            <%= form_with(url: cep_path, local: true) do |form| %>
+                <div class="row form-group">
+				<div class="col-sm-3">
+                    <%= form.text_field :cep, class:"form-control", placeholder:"CEP", value: "#{@cep if  @cep}", onblur:"getDadosEnderecoPorCEP()" %>
+				</div>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" placeholder="Endereço" id="endereco" value="<%= @logradouro if  @logradouro  %>" readonly />
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-sm-6">
+					<input type="text" class="form-control" placeholder="Bairro" id="bairro" value="<%= @bairro if  @bairro  %>" readonly />
+				</div>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" placeholder="Cidade" id="cidade" value="<%= @localidade if  @localidade  %>" readonly />
+				</div>
+
+				<div class="col-sm-2">
+					<input type="text" class="form-control" placeholder="UF" id="uf" value="<%= @uf if  @uf  %>" readonly />
+				</div>
+                <button style="display: none;" type="submit" class="btn btn-primary" id="botao">Submit</button>
+			<% end %>
+		</div>
+
+       <div style="color:red;"> <%= @error %> </div>
+
+
+        <script> 
+        
+            function getDadosEnderecoPorCEP(){
+                $('#botao').click()
+            }
+
+	   </script>
